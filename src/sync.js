@@ -38,18 +38,18 @@ function printSummary(records) {
 }
 
 function missingTokenMessage() {
-  console.error(pc.yellow("No Tokenwall API token found."));
+  console.error(pc.yellow("No Tokeburn API token found."));
   console.error("");
-  console.error("To sync your usage, create an API token in Tokenwall:");
-  console.error("  1. Open Tokenwall and go to " + pc.bold("Settings"));
+  console.error("To sync your usage, create an API token in Tokeburn:");
+  console.error("  1. Open Tokeburn and go to " + pc.bold("Settings"));
   console.error("  2. Create a personal API token");
   console.error("  3. Make it available to the CLI in one of these ways:");
-  console.error("       - run: " + pc.cyan("tokenwall sync --token <your-token>"));
-  console.error("       - or set: " + pc.cyan("export TOKENWALL_TOKEN=<your-token>"));
-  console.error("       - or save it in " + pc.cyan("~/.tokenwall/config.json") +
+  console.error("       - run: " + pc.cyan("tokeburn sync --token <your-token>"));
+  console.error("       - or set: " + pc.cyan("export TOKEBURN_TOKEN=<your-token>"));
+  console.error("       - or save it in " + pc.cyan("~/.tokeburn/config.json") +
     ' as { "token": "<your-token>" }');
   console.error("");
-  console.error("Then run " + pc.cyan("tokenwall sync") + " again.");
+  console.error("Then run " + pc.cyan("tokeburn sync") + " again.");
 }
 
 /**
@@ -107,7 +107,7 @@ async function runSync(opts = {}, env = process.env) {
     });
   } catch (err) {
     console.error("");
-    console.error(pc.red("Could not reach Tokenwall: ") + (err && err.message ? err.message : String(err)));
+    console.error(pc.red("Could not reach Tokeburn: ") + (err && err.message ? err.message : String(err)));
     console.error("Check your network connection and the ingest URL, then try again.");
     return 1;
   }
@@ -121,17 +121,17 @@ async function runSync(opts = {}, env = process.env) {
     }
     console.error("");
     console.error(
-      pc.red(`Tokenwall returned an error: ${response.status} ${response.statusText}`)
+      pc.red(`Tokeburn returned an error: ${response.status} ${response.statusText}`)
     );
     if (response.status === 401 || response.status === 403) {
-      console.error("Your API token may be invalid or expired. Check Settings in Tokenwall.");
+      console.error("Your API token may be invalid or expired. Check Settings in Tokeburn.");
     }
     if (detail) console.error(pc.dim(detail));
     return 1;
   }
 
   console.log("");
-  console.log(pc.green("✓ Synced to Tokenwall."));
+  console.log(pc.green("✓ Synced to Tokeburn."));
   printSummary(records);
   return 0;
 }

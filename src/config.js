@@ -4,14 +4,14 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-const DEFAULT_API_URL = "https://api.tokenwall.app/api/public/ingest";
+const DEFAULT_API_URL = "https://api.tokeburn.app/api/public/ingest";
 
 /**
- * Read and parse ~/.tokenwall/config.json if it exists.
+ * Read and parse ~/.tokeburn/config.json if it exists.
  * Returns an object (possibly empty); never throws on missing/malformed files.
  */
 function readConfigFile() {
-  const configPath = path.join(os.homedir(), ".tokenwall", "config.json");
+  const configPath = path.join(os.homedir(), ".tokeburn", "config.json");
   try {
     const raw = fs.readFileSync(configPath, "utf8");
     const parsed = JSON.parse(raw);
@@ -24,11 +24,11 @@ function readConfigFile() {
 
 /**
  * Resolve the API token.
- * Order: --token flag, TOKENWALL_TOKEN env, config file `token`.
+ * Order: --token flag, TOKEBURN_TOKEN env, config file `token`.
  * Returns a non-empty string or null.
  */
 function resolveToken(opts = {}, env = process.env, config = readConfigFile()) {
-  const candidates = [opts.token, env.TOKENWALL_TOKEN, config.token];
+  const candidates = [opts.token, env.TOKEBURN_TOKEN, config.token];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return c.trim();
   }
@@ -37,10 +37,10 @@ function resolveToken(opts = {}, env = process.env, config = readConfigFile()) {
 
 /**
  * Resolve the ingest URL.
- * Order: --url flag, TOKENWALL_API_URL env, config file `apiUrl`, then default.
+ * Order: --url flag, TOKEBURN_API_URL env, config file `apiUrl`, then default.
  */
 function resolveApiUrl(opts = {}, env = process.env, config = readConfigFile()) {
-  const candidates = [opts.url, env.TOKENWALL_API_URL, config.apiUrl];
+  const candidates = [opts.url, env.TOKEBURN_API_URL, config.apiUrl];
   for (const c of candidates) {
     if (typeof c === "string" && c.trim()) return c.trim();
   }

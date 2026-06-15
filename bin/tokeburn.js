@@ -9,16 +9,16 @@ const { runSync } = require("../src/sync");
 const program = new Command();
 
 program
-  .name("tokenwall")
-  .description("Sync your local AI coding-tool token usage into Tokenwall.")
+  .name("tokeburn")
+  .description("Sync your local AI coding-tool token usage into Tokeburn.")
   .version(pkg.version, "-v, --version", "output the current version");
 
 program
   .command("sync")
-  .description("Read local AI usage logs and send them to Tokenwall.")
+  .description("Read local AI usage logs and send them to Tokeburn.")
   .option("--dry-run", "do everything except the POST; print the JSON payload that would be sent")
-  .option("--token <token>", "override the Tokenwall API token")
-  .option("--url <url>", "override the Tokenwall ingest URL")
+  .option("--token <token>", "override the Tokeburn API token")
+  .option("--url <url>", "override the Tokeburn ingest URL")
   .action(async (opts) => {
     try {
       const code = await runSync(opts);

@@ -1,11 +1,11 @@
-# tokenwall
+# tokeburn
 
-Sync your local AI coding-tool token usage into [Tokenwall](https://tokenwall.app).
+Sync your local AI coding-tool token usage into [Tokeburn](https://tokeburn.app).
 
 Some of your AI token spend only exists locally — terminal coding tools like
-Claude Code write usage logs to your machine that the Tokenwall web app can't
+Claude Code write usage logs to your machine that the Tokeburn web app can't
 read on its own. This CLI reads those local logs, aggregates the token counts,
-and sends them to your Tokenwall account so your $/Mt efficiency score reflects
+and sends them to your Tokeburn account so your $/Mt efficiency score reflects
 everything.
 
 ## Install / Usage
@@ -13,41 +13,41 @@ everything.
 No install needed — run it with `npx`:
 
 ```sh
-npx tokenwall sync
+npx tokeburn sync
 ```
 
 Or install it globally:
 
 ```sh
-npm install -g tokenwall
-tokenwall sync
+npm install -g tokeburn
+tokeburn sync
 ```
 
 Requires **Node.js 18+** (uses the built-in `fetch`).
 
 ## Getting an API token
 
-1. Open Tokenwall and go to **Settings**.
+1. Open Tokeburn and go to **Settings**.
 2. Create a personal **API token**.
 3. Make it available to the CLI in one of these ways:
-   - Pass it directly: `tokenwall sync --token <your-token>`
-   - Set an environment variable: `export TOKENWALL_TOKEN=<your-token>`
-   - Save it in `~/.tokenwall/config.json`:
+   - Pass it directly: `tokeburn sync --token <your-token>`
+   - Set an environment variable: `export TOKEBURN_TOKEN=<your-token>`
+   - Save it in `~/.tokeburn/config.json`:
      ```json
      {
        "token": "<your-token>",
-       "apiUrl": "https://api.tokenwall.app/api/public/ingest"
+       "apiUrl": "https://api.tokeburn.app/api/public/ingest"
      }
      ```
 
-The token is resolved in that order: `--token` flag → `TOKENWALL_TOKEN` →
+The token is resolved in that order: `--token` flag → `TOKEBURN_TOKEN` →
 config file.
 
 ## Commands
 
-### `tokenwall sync`
+### `tokeburn sync`
 
-Reads your local AI usage logs and POSTs the aggregated counts to Tokenwall.
+Reads your local AI usage logs and POSTs the aggregated counts to Tokeburn.
 
 | Flag | Description |
 | --- | --- |
@@ -55,10 +55,10 @@ Reads your local AI usage logs and POSTs the aggregated counts to Tokenwall.
 | `--token <token>` | Override the API token. |
 | `--url <url>` | Override the ingest URL. |
 
-Other built-ins: `tokenwall --version`, `tokenwall --help`.
+Other built-ins: `tokeburn --version`, `tokeburn --help`.
 
-The ingest URL is resolved in this order: `--url` flag → `TOKENWALL_API_URL`
-env → `apiUrl` in the config file → the default Tokenwall ingest endpoint.
+The ingest URL is resolved in this order: `--url` flag → `TOKEBURN_API_URL`
+env → `apiUrl` in the config file → the default Tokeburn ingest endpoint.
 
 ## Supported data sources
 
@@ -75,7 +75,7 @@ The CLI reads Claude Code's per-session `.jsonl` logs under
 `~/.claude/projects/<project>/*.jsonl` (and `~/.claude/transcripts/*.jsonl` if
 present), then aggregates token counts grouped by model and date.
 
-Set `TOKENWALL_CLAUDE_DIR` to point at a different `.claude` root (useful for
+Set `TOKEBURN_CLAUDE_DIR` to point at a different `.claude` root (useful for
 testing).
 
 ## Payload shape

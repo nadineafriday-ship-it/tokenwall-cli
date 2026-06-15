@@ -1,10 +1,10 @@
 {
-  "name": "tokenwall",
+  "name": "tokeburn",
   "version": "0.1.0",
-  "description": "Sync your local AI coding-tool token usage into Tokenwall.",
+  "description": "Sync your local AI coding-tool token usage into Tokeburn.",
   "type": "commonjs",
   "bin": {
-    "tokenwall": "bin/tokenwall.js"
+    "tokeburn": "bin/tokeburn.js"
   },
   "files": [
     "bin/",
@@ -18,7 +18,7 @@
     "node": ">=18"
   },
   "keywords": [
-    "tokenwall",
+    "tokeburn",
     "ai",
     "tokens",
     "usage",
