@@ -1,0 +1,33 @@
+{
+  "name": "tokenwall",
+  "version": "0.1.0",
+  "description": "Sync your local AI coding-tool token usage into Tokenwall.",
+  "type": "commonjs",
+  "bin": {
+    "tokenwall": "bin/tokenwall.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "tokenwall",
+    "ai",
+    "tokens",
+    "usage",
+    "claude",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1"
+  }
+}
