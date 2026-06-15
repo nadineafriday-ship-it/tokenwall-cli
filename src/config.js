@@ -4,7 +4,7 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-const DEFAULT_API_URL = "https://api.tokeburn.app/api/public/ingest";
+const DEFAULT_API_URL = "https://tokeburn.app/api/public/ingest";
 
 /**
  * Read and parse ~/.tokeburn/config.json if it exists.
